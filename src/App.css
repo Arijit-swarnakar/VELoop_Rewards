@@ -1,0 +1,104 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  padding-left: var(--gutter-mobile);
+  padding-right: var(--gutter-mobile);
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    padding-left: var(--margin-desktop);
+    padding-right: var(--margin-desktop);
+  }
+}
+
+/* Page transition */
+.page-enter {
+  animation: float-up 0.3s ease both;
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: var(--space-md);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-outline-variant);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin-slow 1s linear infinite;
+}
+
+.loading-text {
+  color: var(--color-on-surface-variant);
+  font-size: 0.875rem;
+}
+
+/* Error state */
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: var(--space-md);
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.error-icon {
+  font-size: 48px;
+  color: var(--color-error);
+}
+
+.error-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+}
+
+.error-message {
+  color: var(--color-on-surface-variant);
+  max-width: 400px;
+}
+
+/* Not found */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  padding: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.not-found-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+}
+
+.not-found-message {
+  color: var(--color-on-surface-variant);
+  max-width: 400px;
+}

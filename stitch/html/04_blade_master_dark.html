@@ -1,0 +1,455 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=Sora:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#95a4b9",
+          "surface": "#101221",
+          "primary": "#a4c9ff",
+          "surface-dim": "#101221",
+          "primary-fixed": "#d4e3ff",
+          "error-container": "#93000a",
+          "on-background": "#e1e1f6",
+          "on-surface": "#e1e1f6",
+          "on-secondary-fixed-variant": "#653e00",
+          "on-tertiary-fixed": "#0d1c2d",
+          "secondary-container": "#ee9800",
+          "secondary-fixed": "#ffddb8",
+          "inverse-primary": "#0060ac",
+          "on-primary-fixed": "#001c39",
+          "on-primary-container": "#003a6b",
+          "on-tertiary-fixed-variant": "#39485a",
+          "surface-container-high": "#272939",
+          "surface-variant": "#323444",
+          "tertiary": "#b9c8de",
+          "error": "#ffb4ab",
+          "on-secondary-container": "#5b3800",
+          "outline": "#8b919d",
+          "tertiary-fixed": "#d4e4fa",
+          "surface-container": "#1d1f2e",
+          "surface-container-low": "#191b2a",
+          "surface-tint": "#a4c9ff",
+          "tertiary-fixed-dim": "#b9c8de",
+          "on-error-container": "#ffdad6",
+          "on-tertiary-container": "#2c3a4c",
+          "surface-container-highest": "#323444",
+          "on-surface-variant": "#c1c7d3",
+          "secondary": "#ffb95f",
+          "on-error": "#690005",
+          "on-secondary": "#472a00",
+          "on-secondary-fixed": "#2a1700",
+          "inverse-on-surface": "#2d2f3f",
+          "primary-container": "#60a5fa",
+          "surface-container-lowest": "#0b0d1c",
+          "on-primary-fixed-variant": "#004883",
+          "background": "#101221",
+          "on-tertiary": "#233143",
+          "outline-variant": "#414751",
+          "secondary-fixed-dim": "#ffb95f",
+          "primary-fixed-dim": "#a4c9ff",
+          "inverse-surface": "#e1e1f6",
+          "on-primary": "#00315d",
+          "surface-bright": "#363849"
+        },
+        "borderRadius": {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xxs": "0.25rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.75rem",
+          "margin-desktop": "2.5rem",
+          "space-md": "1rem",
+          "space-3xl": "4rem",
+          "gutter-mobile": "1rem",
+          "space-xs": "0.5rem",
+          "gutter-desktop": "1.5rem",
+          "space-xl": "2rem",
+          "margin-mobile": "1.25rem",
+          "space-lg": "1.5rem"
+        },
+        "fontFamily": {
+          "body-lg": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "headline-lg-mobile": ["Sora"],
+          "label-md": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "display-sm": ["Sora"],
+          "body-sm": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "headline-md": ["Sora"],
+          "headline-sm": ["Sora"],
+          "label-lg": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "body-md": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "label-sm": ["Hanken Grotesk", "Plus Jakarta Sans"],
+          "display-lg": ["Sora"],
+          "headline-lg": ["Sora"]
+        }
+      }
+    }
+  }
+</script></head><body class="bg-[#0e101f] font-body-md text-on-surface antialiased selection:bg-primary selection:text-surface-container-lowest"><header class="fixed top-0 left-0 right-0 z-50 bg-[#101221]/80 backdrop-blur-xl border-b border-outline-variant/30"><div class="h-20 max-w-7xl mx-auto px-margin-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center ring-1 ring-outline-variant/40 bg-surface-container"><img alt="Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5XW4Hf4derA8ps-owLPV4T3CHXAaCkQgXuebK7M7ryUbegAwMJFYaGCn29n8GtUYLw7QL-2BkGizzSNmr8HLczkCrzZmMrdBh5vsnrdmLSR1kb8NzRXkIyXgBnBL3C9aFzbf4DW3JQedbDt266zqaTE6zSOgectCd3td4otz50Dklxjs_SNlmNySFh7tReaoJzmGH-j_JQ2Xy3tAGVvIgKI6gKUv_Qt53jzkIjI-3STl1Z_HJh7XcuooPlr1be4fTAUo"></div><span class="font-headline-sm text-lg font-bold tracking-tight text-white flex items-center gap-1.5"><span class="bg-gradient-to-r from-primary via-primary-fixed to-secondary bg-clip-text text-transparent">VELOOP</span><span class="text-on-surface-variant font-medium text-xs tracking-widest uppercase">Rewards</span></span></div><nav class="hidden lg:flex items-center gap-1 p-1 bg-surface-container-lowest/80 border border-outline-variant/30 rounded-full"><a class="px-4 py-1.5 rounded-full font-body-md text-sm text-on-surface-variant hover:text-white hover:bg-surface-container/60 transition-all" data-path="explore" href="#">Explore</a><a aria-current="page" class="px-4 py-1.5 rounded-full text-sm font-semibold transition-all bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/20" data-path="games" href="#">Games</a><a class="px-4 py-1.5 rounded-full font-body-md text-sm text-on-surface-variant hover:text-white hover:bg-surface-container/60 transition-all" data-path="rewards-store" href="#">Rewards Store</a><a class="px-4 py-1.5 rounded-full font-body-md text-sm text-on-surface-variant hover:text-white hover:bg-surface-container/60 transition-all" data-path="leaderboard" href="#">Leaderboard</a></nav><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-3 bg-surface-container-low/90 border border-outline-variant/30 px-3.5 py-1.5 rounded-full shadow-inner"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-secondary text-[18px]">monetization_on</span><span class="font-label-md text-xs font-semibold text-white">14,850</span><span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">Coins</span></div><div class="w-px h-3.5 bg-outline-variant/40"></div><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">token</span><span class="font-label-md text-xs font-semibold text-white">120</span><span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">Tokens</span></div></div><button aria-label="Notifications" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:text-white hover:border-outline transition-all"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="flex items-center pl-1"><div class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-primary/40"><img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVU2AoC7t2cp7chc9XQge7cUt68FWlHItVH86MIjkypCHwPZge74fKWjCUhliixtSmugaWx2GZvGuZMlKuGRp7edvj-K8np2MOooOetwCxpwQTkk8PwfCrEzOvmL3MTHFBmH4JwGe-3nISgfpwdVv2MXfNtP7WJvWc8ILXoDh6y9b_k0KNk4v_jMo8PviA_4NP8j9Ycvy91Q2PNOQ4pNs9XybJ1Ka8g_Ga5bS_176VQyMJQEGU3O3i3SVsh-0yhVfVdPk"></div></div></div></div></header><main class="w-full pt-20 bg-[#0e101f] min-h-[calc(100vh-160px)]"><div class="flex flex-col w-full relative">
+<!-- Luminous Ambient Background Glows -->
+<div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+<div class="absolute -top-32 left-1/4 w-[650px] h-[500px] rounded-full bg-blue-600/15 blur-[120px]"></div>
+<div class="absolute top-1/3 -right-32 w-[550px] h-[550px] rounded-full bg-indigo-600/15 blur-[130px]"></div>
+<div class="absolute -bottom-20 left-1/3 w-[650px] h-[450px] rounded-full bg-amber-500/10 blur-[140px]"></div>
+</div>
+<!-- Softly Blurred Arcade Background Context Layer -->
+<div class="max-w-7xl mx-auto px-margin-desktop w-full opacity-20 blur-sm pointer-events-none select-none transition-all py-space-md">
+<div class="flex items-center justify-between mb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs text-primary font-label-md uppercase tracking-wider mb-space-xs">
+<span class="material-symbols-outlined text-sm">sports_esports</span>
+          VELOOP Precision Arcade
+        </div>
+<h2 class="font-headline-lg text-white">Competitive Skill Challenges</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-space-md py-space-xs rounded-full bg-surface-container font-label-md text-on-surface-variant">24 Games Active</span>
+<span class="px-space-md py-space-xs rounded-full bg-primary-container text-white font-label-md">Tier 4 Multipliers Active</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop">
+<div class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/30">
+<div class="h-44 w-full bg-surface-container rounded-lg mb-space-md"></div>
+<div class="h-5 w-2/3 bg-surface-container-high rounded mb-space-xs"></div>
+<div class="h-4 w-1/3 bg-surface-container rounded"></div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-lg border border-primary/40">
+<div class="h-44 w-full bg-surface-container-high rounded-lg mb-space-md"></div>
+<div class="h-5 w-3/4 bg-primary/20 rounded mb-space-xs"></div>
+<div class="h-4 w-1/4 bg-surface-container rounded"></div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-lg border border-outline-variant/30">
+<div class="h-44 w-full bg-surface-container rounded-lg mb-space-md"></div>
+<div class="h-5 w-1/2 bg-surface-container-high rounded mb-space-xs"></div>
+<div class="h-4 w-1/3 bg-surface-container rounded"></div>
+</div>
+</div>
+</div>
+<!-- Focused Interactive Launch Modal Container -->
+<div class="w-full -mt-[34rem] sm:-mt-[28rem] px-margin-mobile sm:px-margin-desktop z-10 flex flex-col items-center justify-center pb-space-xl">
+<!-- Top Action Breadcrumb Bar -->
+<div class="w-full max-w-4xl flex items-center justify-between mb-space-sm">
+<a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#181b2e]/90 border border-outline-variant/40 shadow-lg text-on-surface-variant hover:text-white hover:border-primary/50 transition-all font-body-md text-xs group" href="#">
+<span class="material-symbols-outlined text-base transition-transform group-hover:-translate-x-1">arrow_back</span>
+<span class="">Back to Arcade</span>
+</a>
+<div class="flex items-center gap-2 bg-[#181b2e]/90 border border-outline-variant/40 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-lg text-on-surface-variant text-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="">Secure Match: <strong class="text-white font-mono">#BM-8842-XP</strong></span>
+</div>
+</div>
+<!-- Primary Stage Card in Sleek Dark Theme -->
+<section class="w-full max-w-4xl bg-[#141627] border border-outline-variant/40 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden flex flex-col backdrop-blur-sm">
+<!-- Top Decorative Gamified Header Stripe -->
+<div class="w-full bg-gradient-to-r from-[#171a35] via-[#1f2444] to-[#1a1e38] border-b border-outline-variant/30 p-5 sm:p-7 relative overflow-hidden"><div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEf-CTWU0Oh4OpsvRKjjvvtpgarxa07lH0Kil6sPuH-z031ljaEgtLIG4lsv2Jj2jPmDS2jiGNM0HboxC0H7ZJIOrJQ4IdNAZzaGr7DybE2fln56VE7UGkbaviIbo3yURnjs6E4PaiYvWi0HMyBep6bqIWm0DgTcqkS0cQ0jS61K92P71tgn3iOWXVQFljPTyYB-TV_a3AKUMYI1NIOSIwsQitH9KloNBz3vdS58o3rEejpgaj71CYlKmYqvDGVnza9co" alt="" class="w-full h-full object-cover blur-sm scale-110"></div>
+<!-- Luminous decorative light flares -->
+<div class="absolute -right-16 -top-16 w-60 h-60 rounded-full bg-primary/10 blur-2xl pointer-events-none"></div>
+<div class="absolute left-1/3 -bottom-8 w-44 h-44 rounded-full bg-secondary/10 blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+<div class="flex items-start sm:items-center gap-4">
+<!-- Game Artwork Thumbnail / Poster Accent -->
+<div class="relative w-20 h-20 sm:w-22 sm:h-22 rounded-xl overflow-hidden shadow-lg flex-shrink-0 bg-surface-container-lowest ring-2 ring-primary/40 group"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh4YbN9UHep4Yf88E4MAYQ48KS68hA4rs4souLb8C5PoPjeZkgurrlZ_IpHwnlqxy3jIYd2rCGW4z2bIgDSWqqgNlQ546W6-Q66Z-ZFsyDEPVPBlZ2q300x_FYEQPWMXY4Atpt6oCv2AlFcVavBzYaQ_z2qmZWFVRDDcy0crousevQLc2_oVZfjz7nf-HvJ7CR9HireR7tK2HEZhIzCldjtOnn_MQ2s2Qrtmxj4QLCRAKvUZdnKkJmmX9pY5BpD-9BanU" alt="Blade Master Artwork" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"><div class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-secondary-container text-black text-[8px] font-extrabold tracking-wider uppercase shadow-sm">NEW</div></div>
+<!-- Title & Metadata -->
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-primary/15 border border-primary/30 text-primary-fixed text-[11px] font-semibold tracking-wide uppercase">
+Reflex &amp; Precision
+</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">bolt</span> Instant Payout
+</span>
+</div>
+<h1 class="font-headline-lg text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
+Blade Master!
+</h1>
+<div class="flex items-center gap-3 mt-1.5 text-on-surface-variant text-xs">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-white">4.9</span>
+<span class="text-on-surface-variant text-[11px]">(14,240 players)</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span class="">Avg. 2 min / run</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Reward Snapshot Badge -->
+<div class="flex md:flex-col items-center md:items-end justify-between bg-[#1f233f]/70 border border-outline-variant/40 rounded-xl px-4 py-3 text-right shadow-sm">
+<div class="text-left md:text-right">
+<span class="block text-[11px] uppercase tracking-wider text-on-surface-variant font-medium">Est. Yield Per Run</span>
+<span class="font-headline-md text-xl sm:text-2xl font-bold text-transparent bg-gradient-to-r from-amber-300 via-secondary to-amber-100 bg-clip-text">+250 Coins</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-semibold mt-1 border border-emerald-500/30">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +20 Tier XP
+</div>
+</div>
+</div>
+</div>
+<!-- Token Entry Requirement & Balance Status Banner -->
+<div class="bg-[#181b2e] border-b border-outline-variant/30 px-5 sm:px-7 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<!-- Token Entry Highlight -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center bg-surface-container-lowest border border-amber-500/30 shadow-sm flex-shrink-0"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU3WNtUxcEfSPuXHzPRnBEKin1jkDTlVr-Oxu6OVFi9kwopKpKAvuV6tGenR4_AZ8eodpsOEFTOfJwhteJeGZOR7gGSBkUJqqXcxvKDe3CxlyQ2GDSZ9julIKT4NCBZvEhhZJjLHgmAP7noVa7w-rlskmNlctrt8vFgA6_p7HFYIB66YZpk2wmMiF3gRdxNbejAGaY8lZx39C9WBpbLbjxBkXc3cmdqpE9HW8HTSZgaUH0_6rQpzH4oXMhnH64zBB5e6E" alt="Token" class="w-full h-full object-cover"></div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] uppercase tracking-wider text-secondary font-bold">Standard Match Stake</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary/10 border border-secondary/30 text-secondary-fixed text-[10px] font-semibold">Verified</span>
+</div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-xl sm:text-2xl text-white font-extrabold tracking-tight">20</span>
+<span class="text-xs text-on-surface-variant font-medium">Tokens Required</span>
+</div>
+</div>
+</div>
+<!-- Balance Status Chip -->
+<div class="flex items-center gap-3 bg-[#111322] border border-outline-variant/40 px-3.5 py-2 rounded-xl">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+</div>
+<div class="leading-tight">
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-wider">Current Wallet</span>
+<span class="text-xs text-white font-bold">120 Tokens</span>
+</div>
+</div>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+<span class="material-symbols-outlined text-sm text-emerald-400" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="">Sufficient Balance</span>
+</div>
+</div>
+</div>
+<!-- Main Modal Body Content -->
+<div class="p-5 sm:p-7 flex flex-col gap-6">
+<!-- Instructions Section -->
+<div>
+<div class="flex items-center justify-between mb-3.5">
+<div>
+<span class="text-[11px] text-primary uppercase font-bold tracking-wider">Tactical Briefing</span>
+<h3 class="font-headline-sm text-lg font-bold text-white">How to Play &amp; Win</h3>
+</div>
+<span class="hidden sm:inline-flex items-center gap-1 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-emerald-400">verified</span>
+Fair Play Guaranteed
+</span>
+</div>
+<!-- Streamlined 4 Instruction Cards (Concise, punchy 1-2 short sentences each) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Rule 01 -->
+<div class="bg-[#181b2e] hover:bg-[#20243b] border border-outline-variant/30 hover:border-primary/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-6 h-6 rounded-md bg-primary/20 text-primary border border-primary/30 flex items-center justify-center text-xs font-extrabold font-mono">01</span>
+<span class="material-symbols-outlined text-primary text-lg group-hover:scale-110 transition-transform">touch_app</span>
+</div>
+<h4 class="font-headline-sm text-sm font-semibold text-white mb-1">Aim &amp; Tap</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+Click or tap to launch daggers into the revolving log.
+</p>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant/20 text-primary text-[10px] uppercase font-bold flex items-center justify-between">
+<span class="">Primary Action</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</div>
+</div>
+<!-- Rule 02 -->
+<div class="bg-[#181b2e] hover:bg-[#20243b] border border-outline-variant/30 hover:border-red-400/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-6 h-6 rounded-md bg-red-500/20 text-red-300 border border-red-500/30 flex items-center justify-center text-xs font-extrabold font-mono">02</span>
+<span class="material-symbols-outlined text-red-400 text-lg group-hover:scale-110 transition-transform">close</span>
+</div>
+<h4 class="font-headline-sm text-sm font-semibold text-white mb-1">Avoid Deflection</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+Never strike already embedded blades—one hit ends your run.
+</p>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant/20 text-red-300 text-[10px] uppercase font-bold flex items-center justify-between">
+<span class="">Zero Margin</span>
+<span class="material-symbols-outlined text-xs">warning</span>
+</div>
+</div>
+<!-- Rule 03 -->
+<div class="bg-[#181b2e] hover:bg-[#20243b] border border-outline-variant/30 hover:border-secondary/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-6 h-6 rounded-md bg-secondary/20 text-secondary border border-secondary/30 flex items-center justify-center text-xs font-extrabold font-mono">03</span>
+<span class="material-symbols-outlined text-secondary text-lg group-hover:scale-110 transition-transform">stars</span>
+</div>
+<h4 class="font-headline-sm text-sm font-semibold text-white mb-1">Bonus Targets</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+Slice circulating tokens and apples for instant coin multipliers.
+</p>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant/20 text-secondary text-[10px] uppercase font-bold flex items-center justify-between">
+<span class="">+50 Bonus Coins</span>
+<span class="material-symbols-outlined text-xs">savings</span>
+</div>
+</div>
+<!-- Rule 04 -->
+<div class="bg-[#181b2e] hover:bg-[#20243b] border border-outline-variant/30 hover:border-emerald-400/40 rounded-xl p-3.5 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center justify-center text-xs font-extrabold font-mono">04</span>
+<span class="material-symbols-outlined text-emerald-400 text-lg group-hover:scale-110 transition-transform">trophy</span>
+</div>
+<h4 class="font-headline-sm text-sm font-semibold text-white mb-1">Claim Payout</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+Clear 5 stages to lock in your coins and leaderboard rank.
+</p>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant/20 text-emerald-300 text-[10px] uppercase font-bold flex items-center justify-between">
+<span class="">Instant Payout</span>
+<span class="material-symbols-outlined text-xs">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Compact Horizontal Controls Bar & Concise Pro Tip -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+<!-- Streamlined Compact Horizontal Controls Bar (7 cols) -->
+<div class="lg:col-span-7 bg-[#181b2e] border border-outline-variant/30 rounded-xl p-3.5 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base">gamepad</span>
+Supported Controls
+</span>
+<span class="text-[10px] text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full font-medium">&lt;10ms Latency</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-[#111322] border border-outline-variant/30 rounded-lg p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">mouse</span>
+<div>
+<div class="text-xs font-bold text-white">Mouse</div>
+<div class="text-[10px] text-on-surface-variant">Left Click</div>
+</div>
+</div>
+<div class="bg-[#111322] border border-outline-variant/30 rounded-lg p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">space_bar</span>
+<div>
+<div class="text-xs font-bold text-white">Spacebar</div>
+<div class="text-[10px] text-on-surface-variant">Key Press</div>
+</div>
+</div>
+<div class="bg-[#111322] border border-outline-variant/30 rounded-lg p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">touch_app</span>
+<div>
+<div class="text-xs font-bold text-white">Touch</div>
+<div class="text-[10px] text-on-surface-variant">Tap Screen</div>
+</div>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">rotate_right</span>
+Wheel reverses speed dynamically after Stage 2
+</span>
+<span class="text-[10px] font-mono text-primary bg-primary/10 px-1.5 py-0.5 rounded">Stage 1: 30 RPM</span>
+</div>
+</div>
+<!-- Concise Pro Tip Card (5 cols) -->
+<div class="lg:col-span-5 bg-gradient-to-br from-[#1b1f38] to-[#14172c] border border-outline-variant/30 rounded-xl p-3.5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-primary/10 blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center gap-1.5 text-primary text-xs font-bold uppercase tracking-wider mb-1.5">
+<span class="material-symbols-outlined text-base text-amber-300">lightbulb</span>
+Pro Tip
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+Don't spam taps. Launch blades right during the subtle <strong class="text-white">0.2s pause</strong> when the target wheel switches rotation direction.
+</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm">stars</span>
+<span class="text-white font-bold text-[11px]">5x Streak Multiplier</span>
+</div>
+<span class="text-[10px] text-emerald-300 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Active for VIP</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer & Interactive Launch Action Bar -->
+<div class="bg-[#101221] border-t border-outline-variant/30 px-5 sm:px-7 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<!-- Left: Balance Math Breakdown -->
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="w-9 h-9 rounded-full bg-[#181b2e] border border-outline-variant/40 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5 text-xs">
+<span class="text-on-surface-variant">Balance after play:</span>
+<span class="text-white font-extrabold text-sm">100 Tokens</span>
+</div>
+<span class="text-[10px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[11px] text-emerald-400">check</span> Auto-refunded if network disconnects
+</span>
+</div>
+</div>
+<!-- Right: Action Buttons -->
+<div class="flex flex-col-reverse sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+<!-- Practice Mode Button -->
+<button class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#181b2e] hover:bg-[#222742] text-on-surface border border-outline-variant/40 hover:border-outline text-xs font-semibold transition-all text-center" type="button">
+Practice Mode (Free)
+</button>
+<!-- Play Now Hero CTA with Pulse and glowing accent -->
+<button class="relative group w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 text-white font-headline-sm text-sm font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 hover:brightness-110 active:scale-[0.98] transition-all overflow-hidden" id="btn-play-now" type="button">
+<span class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000 ease-out"></span>
+<span class="material-symbols-outlined text-lg">play_circle</span>
+<span class="">Play Now</span>
+<span class="text-[11px] px-2 py-0.5 rounded-md bg-black/40 border border-white/20 text-white font-mono tracking-tight inline-flex items-center gap-1.5 shadow-inner"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXUKE1G9uEi8e2_TRsfxfVfbFpSoas-ZyoAZpkCQqAj58kIFnvIIqYmDOqWP6CHL37hk5KlxX_-DYHgXn0OjJKHUKVd74VGBIARz4f6s48XgIF2ndFrwjBg5MMpZC1oycfaQZ8FvkBC-iA5tk9HyelPFb7MJoMJGYTqKyhStia0NgLZPw_RPcJtZxh0KqFCmQ1c4P9Xu09Y_2CHPKSKl2_wHTyaPtMuHeiTKRGTNRU3NLe_lSxrO2aoZkB3aPePAy3Z8E" alt="Token" class="w-4 h-4 object-contain rounded-sm"><span class="">20 TOKENS</span></span>
+<span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Reassurance Notes -->
+<div class="mt-4 flex flex-wrap items-center justify-center gap-6 text-on-surface-variant text-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-emerald-400">lock</span>
+<span class="">256-Bit RNG Certified</span>
+</div>
+
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">groups</span>
+<span class="">1,842 Challengers In-Game Now</span>
+</div>
+</div>
+</div>
+<!-- Inline Micro-interaction Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const playBtn = document.getElementById('btn-play-now');
+      if (playBtn) {
+        playBtn.addEventListener('click', () => {
+          const originalHTML = playBtn.innerHTML;
+          playBtn.disabled = true;
+          playBtn.innerHTML = `
+            <span class="material-symbols-outlined animate-spin text-lg">sync</span>
+            <span>Allocating Match Node...</span>
+          `;
+          setTimeout(() => {
+            playBtn.innerHTML = `
+              <span class="material-symbols-outlined text-lg">check</span>
+              <span>Ready! Fling your blade...</span>
+            `;
+            setTimeout(() => {
+              playBtn.innerHTML = originalHTML;
+              playBtn.disabled = false;
+            }, 1800);
+          }, 1200);
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-[#0b0d1c] border-t border-outline-variant/30"><div class="max-w-7xl mx-auto px-margin-desktop py-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="w-7 h-7 rounded-full overflow-hidden ring-1 ring-outline-variant/40"><img alt="Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0BrQo5jcyOHhWGNZZN_B2mlkfw-DEPP1D1lELJzPGB-RGnlqaTnjbwyMpwrrt4YCqxcmz34NWaI2p62vi-NpPsFu0PVk3T64kA7fWyVI7srsNiiZ3cv5cHQqgBHgROuQDfd98FR4STaPTaWyLxNt-ZVFkSdhkdTaEOOaYS12nshWCwjPWCoJLOcNB9wcEJOEjwopCR4AbFCnJ6J8mSOhrb8ipi9A3n8Ni4D9SMtNZhiYQYXzznQN3Xfsf-02fj_FxycM"></div><span class="font-body-md text-xs text-on-surface-variant">© 2025 VELOOP Rewards Inc. All rights reserved.</span></div><div class="flex items-center gap-space-lg text-xs"><a class="font-body-md text-on-surface-variant hover:text-white transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-body-md text-on-surface-variant hover:text-white transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="font-body-md text-on-surface-variant hover:text-white transition-colors" data-path="reward-rules" href="#">Reward Rules</a><a class="font-body-md text-on-surface-variant hover:text-white transition-colors" data-path="security" href="#">Security</a></div></div></footer>
+
+</body></html>

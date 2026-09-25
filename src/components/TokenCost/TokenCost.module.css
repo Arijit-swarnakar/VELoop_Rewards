@@ -1,0 +1,47 @@
+.tokenCost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tokenIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 4px;
+  mix-blend-mode: screen;
+}
+
+.costText {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffb95f;
+  letter-spacing: 0.02em;
+}
+
+.sm {
+  padding: 0.15rem 0.4rem;
+}
+.sm .tokenIcon {
+  width: 16px;
+  height: 16px;
+}
+.sm .costText {
+  font-size: 0.75rem;
+}
+
+.lg {
+  padding: 0.4rem 0.85rem;
+}
+.lg .tokenIcon {
+  width: 24px;
+  height: 24px;
+}
+.lg .costText {
+  font-size: 1rem;
+}

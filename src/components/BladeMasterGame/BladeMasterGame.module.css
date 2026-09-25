@@ -1,0 +1,202 @@
+.gameContainer {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  aspect-ratio: 9 / 14;
+  background: radial-gradient(circle at 50% 30%, #171b35 0%, #0e101f 85%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  user-select: none;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+/* In-game HUD */
+.hud {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hudLeft, .hudRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stageBadge {
+  background: rgba(16, 18, 33, 0.85);
+  border: 1px solid rgba(164, 201, 255, 0.3);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #a4c9ff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.scoreBadge {
+  background: rgba(16, 18, 33, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.coinsBadge {
+  background: rgba(16, 18, 33, 0.85);
+  border: 1px solid rgba(255, 185, 95, 0.3);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffb95f;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hudBtn {
+  pointer-events: auto;
+  background: rgba(16, 18, 33, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #e1e1f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hudBtn:hover {
+  background: rgba(30, 35, 60, 0.95);
+  border-color: #a4c9ff;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Dagger magazine rack */
+.daggerRack {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.rackDagger {
+  width: 14px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.rackDaggerIcon {
+  font-size: 20px;
+  color: #60a5fa;
+  filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.6));
+}
+
+.rackDaggerUsed .rackDaggerIcon {
+  color: rgba(255, 255, 255, 0.2);
+  filter: none;
+}
+
+/* Tap instruction prompt */
+.tapHint {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 12px;
+  color: rgba(225, 225, 246, 0.6);
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  animation: pulseHint 2s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 0.9; transform: translateY(-3px); }
+}
+
+/* Stage Announcement Banner */
+.stageOverlay {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(16, 18, 33, 0.92);
+  border: 1px solid #60a5fa;
+  box-shadow: 0 0 30px rgba(96, 165, 250, 0.4);
+  padding: 16px 36px;
+  border-radius: 16px;
+  text-align: center;
+  z-index: 20;
+  pointer-events: none;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stageTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px;
+  letter-spacing: 1px;
+}
+
+.stageSubtitle {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 13px;
+  color: #a4c9ff;
+  margin: 0;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .gameContainer {
+    border-radius: 12px;
+    max-height: 80vh;
+  }
+}

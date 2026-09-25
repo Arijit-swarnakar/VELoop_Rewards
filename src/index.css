@@ -1,0 +1,165 @@
+/* =========================================================
+   VELoop REWARDS — Global Design Tokens & Base Styles
+   Derived from Stitch design system (dark theme)
+   ========================================================= */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* --- Google Fonts imported in index.html --- */
+
+:root {
+  /* Color tokens */
+  --color-bg:                  #101221;
+  --color-surface:             #101221;
+  --color-surface-dim:         #101221;
+  --color-surface-lowest:      #0b0d1c;
+  --color-surface-low:         #191b2a;
+  --color-surface-container:   #1d1f2e;
+  --color-surface-high:        #272939;
+  --color-surface-highest:     #323444;
+  --color-surface-bright:      #363849;
+  --color-surface-variant:     #323444;
+
+  --color-primary:             #a4c9ff;
+  --color-primary-fixed:       #d4e3ff;
+  --color-primary-fixed-dim:   #a4c9ff;
+  --color-primary-container:   #60a5fa;
+  --color-on-primary:          #00315d;
+  --color-inverse-primary:     #0060ac;
+
+  --color-secondary:           #ffb95f;
+  --color-secondary-container: #ee9800;
+  --color-on-secondary:        #472a00;
+
+  --color-tertiary:            #b9c8de;
+  --color-tertiary-fixed:      #d4e4fa;
+  --color-tertiary-fixed-dim:  #b9c8de;
+
+  --color-on-surface:          #e1e1f6;
+  --color-on-surface-variant:  #c1c7d3;
+  --color-on-bg:               #e1e1f6;
+
+  --color-outline:             #8b919d;
+  --color-outline-variant:     #414751;
+
+  --color-error:               #ffb4ab;
+  --color-error-container:     #93000a;
+
+  /* Fonts */
+  --font-display: 'Sora', sans-serif;
+  --font-body:    'Hanken Grotesk', sans-serif;
+
+  /* Spacing */
+  --space-xxs:  0.25rem;
+  --space-xs:   0.5rem;
+  --space-sm:   0.75rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+  --gutter-mobile:  1rem;
+  --gutter-desktop: 1.5rem;
+  --margin-mobile:  1.25rem;
+  --margin-desktop: 2.5rem;
+
+  /* Border radius */
+  --radius-sm:   0.5rem;
+  --radius-md:   1rem;
+  --radius-lg:   2rem;
+  --radius-xl:   3rem;
+  --radius-full: 9999px;
+
+  /* Max content width */
+  --max-w: 1280px;
+
+  /* Shadows */
+  --shadow-card: 0 12px 28px rgba(0,0,0,0.35);
+  --shadow-header: 0 12px 32px -4px rgba(10,12,22,0.65);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+/* ---- Typography ---- */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+/* ---- Shimmer animation (Play Now button) ---- */
+@keyframes shimmer {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(250%); }
+}
+
+@keyframes shimmer-loop {
+  0%   { transform: translateX(-150%); }
+  60%  { transform: translateX(250%); }
+  100% { transform: translateX(250%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes float-up {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-anim,
+  .autoplay-running { animation: none !important; }
+}
+
+/* ---- Utility: image on dark bg with black surround ---- */
+.img-screen { mix-blend-mode: screen; }
+
+/* ---- Material Symbols ---- */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  user-select: none;
+}
+.icon-fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* ---- Bootstrap overrides for dark theme ---- */
+.btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+a:focus-visible    { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* ---- Page transition ---- */
+.page-enter {
+  animation: float-up 0.3s ease both;
+}
+
+/* ---- Focus visible ---- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---- Safe area support ---- */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

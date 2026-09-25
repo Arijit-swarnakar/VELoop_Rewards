@@ -1,0 +1,427 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md) 100px;
+  min-height: calc(100vh - 72px);
+}
+
+/* Hero & Tournament Banner */
+.hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #1b213b 0%, #101426 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: var(--space-xl) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+.heroGlow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(238, 152, 0, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pillTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #ffb95f;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  color: var(--color-on-surface-variant);
+  font-size: 0.95rem;
+  max-width: 650px;
+  margin: 0 0 var(--space-lg);
+  line-height: 1.5;
+}
+
+.tournamentBanner {
+  background: rgba(11, 13, 28, 0.7);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tourneyLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tourneyIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffb95f;
+}
+
+.tourneyTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tourneySubtitle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.tourneyPool {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  color: #34d399;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* Tabs & Filter Bar */
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: var(--space-xl);
+}
+
+.tabs {
+  display: flex;
+  background: #181d33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 7px 18px;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  color: #ffffff;
+}
+
+.tabActive {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.timePills {
+  display: flex;
+  background: #181d33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  gap: 4px;
+}
+
+.timePill {
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timePillActive {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Top 3 Podium */
+.podiumGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: var(--space-xl);
+  align-items: flex-end;
+}
+
+@media (max-width: 680px) {
+  .podiumGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.podiumCard {
+  background: #181d33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.podiumCard:hover {
+  transform: translateY(-4px);
+}
+
+.podium1 {
+  order: 2;
+  border-color: rgba(245, 158, 11, 0.45);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.12) 0%, #181d33 70%);
+  padding-top: var(--space-xl);
+}
+
+.podium2 {
+  order: 1;
+  border-color: rgba(148, 163, 184, 0.4);
+}
+
+.podium3 {
+  order: 3;
+  border-color: rgba(180, 83, 9, 0.4);
+}
+
+@media (max-width: 680px) {
+  .podium1 { order: 1; }
+  .podium2 { order: 2; }
+  .podium3 { order: 3; }
+}
+
+.rankBadge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.goldBadge {
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  color: #101221;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.5);
+}
+
+.silverBadge {
+  background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+  color: #101221;
+}
+
+.bronzeBadge {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  color: #ffffff;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #232947;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.playerName {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 2px;
+}
+
+.tierTag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #60a5fa;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.podiumScore {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffb95f;
+  margin-bottom: 4px;
+}
+
+.podiumPrize {
+  font-size: 0.75rem;
+  color: #34d399;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Leaderboard Table */
+.tableContainer {
+  background: #181d33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--space-xl);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.th {
+  padding: 14px 18px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 13, 28, 0.4);
+}
+
+.td {
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.tableRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.playerCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.miniAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #232947;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* User Status Bar */
+.userStatusBar {
+  background: linear-gradient(135deg, #1e2544 0%, #151a30 100%);
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.userStatusLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userRankBadge {
+  background: #2563eb;
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.userStatusInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userStatusName {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.userStatusScore {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.climbBtn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border-radius: var(--radius-full);
+  padding: 9px 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.climbBtn:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-1px);
+  color: #fff;
+}

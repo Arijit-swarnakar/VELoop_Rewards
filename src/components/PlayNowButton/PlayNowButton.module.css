@@ -1,0 +1,112 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2b304c 0%, #1a1e35 100%);
+  border: 1px solid rgba(164, 201, 255, 0.35);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3d456b 0%, #232947 100%);
+  border-color: rgba(164, 201, 255, 0.7);
+  box-shadow: 0 6px 20px rgba(164, 201, 255, 0.25);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.btnInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.arrowIcon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.button:hover:not(:disabled) .arrowIcon {
+  transform: translateX(3px);
+}
+
+/* Shimmer beam */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmerAnim 3.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shimmerAnim {
+  0% {
+    left: -150%;
+  }
+  35%, 100% {
+    left: 150%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    display: none;
+  }
+  .button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Sizes */
+.sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+}
+.sm .arrowIcon {
+  font-size: 13px;
+}
+
+.md {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+.lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+}
+.lg .arrowIcon {
+  font-size: 18px;
+}

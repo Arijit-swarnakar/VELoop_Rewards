@@ -1,0 +1,206 @@
+/* Tokenomics.module.css - Stitch Dark Theme */
+
+.section {
+  width: 100%;
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-xl);
+}
+
+.container {
+  background: rgba(20, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 36px 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px -4px rgba(10, 12, 22, 0.65);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #60a5fa;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* 3 Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.card {
+  background: #111426;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.stepBadge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.stepBadge1 {
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}
+
+.stepBadge2 {
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fbbf24;
+}
+
+.stepBadge3 {
+  background: rgba(168, 85, 247, 0.18);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cardIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Footer under Tokenomics */
+.footer {
+  margin-top: var(--space-3xl);
+  padding: 32px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footerBrand {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.footerCopy {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footerLink {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.footerLink:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px 18px;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

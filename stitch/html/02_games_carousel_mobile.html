@@ -1,0 +1,433 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed-variant": "#39485a", "surface-container-highest": "#323444", "on-tertiary-container": "#2c3a4c", "secondary-fixed-dim": "#ffb95f", "outline-variant": "#414751", "on-error-container": "#ffdad6", "inverse-on-surface": "#2d2f3f", "on-background": "#e1e1f6", "on-primary-fixed": "#001c39", "tertiary-container": "#95a4b9", "surface-dim": "#101221", "surface-container-lowest": "#0b0d1c", "background": "#101221", "on-primary-fixed-variant": "#004883", "surface-container-high": "#272939", "surface-tint": "#a4c9ff", "outline": "#8b919d", "on-surface": "#e1e1f6", "surface": "#101221", "primary-fixed-dim": "#a4c9ff", "tertiary": "#b9c8de", "primary-container": "#60a5fa", "surface-bright": "#363849", "surface-container": "#1d1f2e", "primary-fixed": "#d4e3ff", "on-primary": "#00315d", "surface-variant": "#323444", "on-tertiary": "#233143", "inverse-primary": "#0060ac", "on-secondary-container": "#5b3800", "tertiary-fixed": "#d4e4fa", "on-error": "#690005", "secondary": "#ffb95f", "primary": "#a4c9ff", "on-primary-container": "#003a6b", "error": "#ffb4ab", "secondary-container": "#ee9800", "on-secondary-fixed": "#2a1700", "on-secondary-fixed-variant": "#653e00", "inverse-surface": "#e1e1f6", "error-container": "#93000a", "tertiary-fixed-dim": "#b9c8de", "on-surface-variant": "#c1c7d3", "surface-container-low": "#191b2a", "on-tertiary-fixed": "#0d1c2d", "secondary-fixed": "#ffddb8", "on-secondary": "#472a00" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "gutter-mobile": "1rem", "space-lg": "1.5rem", "space-xs": "0.5rem", "space-xxs": "0.25rem", "gutter-desktop": "1.5rem", "space-md": "1rem", "space-sm": "0.75rem", "margin-desktop": "2.5rem", "space-3xl": "4rem", "margin-mobile": "1.25rem", "space-2xl": "3rem", "space-xl": "2rem" }, "fontFamily": { "headline-sm": ["Sora"], "headline-lg": ["Sora"], "body-lg": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "display-sm": ["Sora"], "label-lg": ["Hanken Grotesk"], "headline-md": ["Sora"], "body-sm": ["Hanken Grotesk"], "display-lg": ["Sora"], "label-md": ["Hanken Grotesk"], "label-sm": ["Hanken Grotesk"], "headline-lg-mobile": ["Sora"] }, "fontSize": { "headline-sm": ["1.25rem", { "lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500" }], "headline-lg": ["2rem", { "lineHeight": "1.25", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }], "body-md": ["1rem", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }], "display-sm": ["2.5rem", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600" }], "headline-md": ["1.5rem", { "lineHeight": "1.35", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-sm": ["0.875rem", { "lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-lg": ["3.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-md": ["0.75rem", { "lineHeight": "1.4", "letterSpacing": "0.04em", "fontWeight": "600" }], "label-sm": ["0.6875rem", { "lineHeight": "1.3", "letterSpacing": "0.06em", "fontWeight": "700" }], "headline-lg-mobile": ["1.625rem", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Sora:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm text-primary tracking-wider uppercase font-bold">VELOOP Rewards</span><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Games</h1></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex items-center gap-space-xxs px-space-sm py-1 rounded-full bg-surface-container-high/90 shadow-[0_0_12px_rgba(255,185,95,0.15)]"><span class="material-symbols-outlined text-secondary text-base">toll</span><span class="font-label-md text-label-md text-on-surface font-semibold">1,450</span><span class="font-label-sm text-label-sm text-secondary font-bold">VE</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-primary/30" src="https://lh3.googleusercontent.com/aida/AEtjO1WStPPhhNbVx7xqeLBoEnaBZw--00ABa3fxWsXffS9uv_NOtfRI-MO4tK8bmh-_tuxTTqhrj8F-cUF_m9gpZg4WS0OMs8qeAxTsy1KeerDVypJTYi8fy4g7FTul3DolpKaDqLBv-YqPoZMnvx3aUwXaX15N4fJcKfo-lEJ3kGKpOSVGRgSTRFsiCdKcaY-YhXImKQcE1fv81MLSeDQtE0J2FFYIL0rDFHQMGs6OSO_plcQ_Q7uVTrPqSe0UfZs9IR_u4P9z4D6zK7U"></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Top Aura -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-16 left-1/2 -translate-x-1/2 w-80 h-36 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Section Header Area -->
+<div class="px-gutter-mobile pt-space-xs pb-space-sm flex flex-col gap-space-xxs relative z-10">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-space-xxs px-space-sm py-1 rounded-full bg-surface-container-high shadow-[0_0_16px_rgba(96,165,250,0.2)]">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-bold">Featured Arcade</span>
+</div>
+<div class="flex items-center gap-space-xxs text-tertiary transition-opacity duration-700" id="swipe-hint">
+<span class="material-symbols-outlined text-sm animate-[bounce_1.6s_infinite]">swipe</span>
+<span class="font-label-sm text-label-sm">Swipe to play</span>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold tracking-tight mt-1">
+        Explore Games &amp; Earn Rewards
+      </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Play mini-games, beat high scores, and earn <span class="text-secondary font-bold">+20 Tokens</span> each round!
+      </p>
+</div>
+<!-- Horizontal Swipe Carousel -->
+<div class="w-full flex gap-space-sm overflow-x-auto snap-x snap-mandatory px-gutter-mobile py-space-xs no-scrollbar" id="games-carousel" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+<!-- Card 1: Blade Master! -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Blade Master!" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZk3qrI0lMhvzoPoKWu4H98F7Q4hzLoI_NkxxKi_1xecIcbWKoB3Dl7z3qLtJaf1pVxxsT_tlFxKvas8JFhUM2CBO2DOLN_IK8Pg5PoGzR-tBhFu9D946dzFHPjRUS2fPtz1K2CTxv0jV2_if9hcRSzRFIsy9kvkG0lURjP1d_N0Vo1kLKzhCmMeloPNE5a1zAvyTfusyJ-HmVjPwPE5Mo1z1-NdAmadFsIvkL1_bliDsP0QXWL3c4pMIO7Fo-9_nDnOI">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">#1 Trending</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 2: Nutcraft -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Nutcraft" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjZCDcPJzsbY3SH31oM9zW5uDm_HI0gc0rN8kEYXdlGbgcMU_FGv67S6DiM9jA1QVxlJA2wU_XgZXC_54zH55eS8EYbySPIYWmN6lBJyXH0-eVTomhbf-g5zELDJcTWWWWkLy6gfvGvGVcNb-65lR2Ry9JqyCqFAo_0Gz154lDMMM5DSxjVF-rwsXUIUmTlx1791Z0SsQESPyv4FJyLc1XRJwyZzC_aP2QvICx7j_235d_JSQZzXqkehPQ76dfOg__svg">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Puzzle &amp; Build</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 3: Bowlexa -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Bowlexa" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDThpVWXWTE0bC7DCyLlP0lrOKG93OASdVhFU_qP3P5soAzS6EiVdPuDFDpt7U56VJisDEW9hcf53OaHZDFuEShSPsZ4uBijewkkaOoPN-7DI7mt6Tpi32u3_U_630nnX4T_LKWWiwGe3_5mmuj7OK71JaG5FHncWW3048fTC833YCW4WTyAYUsqpHxRvjzP_mvIe_54pnDLBvQ8-7rMXfwdni1rgnZ7OyHP7NCMW7YzKMXteI6fQV-0aqqURTYjHzjO5g">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Strike Master</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 4: Block Crush -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Block Crush" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcU-hupSxtIbBH7t9PXA88mZQFzDFLZi1MU0iHw3nXLznAw266Ziucp4dSPzqSqqe4vIWgiepUVLfgmcMBcNjC7A0a5BhWxovdPJm-4IkHa3yYaHQ8PTT09JKKedixEY065gXjnOAIDDI8UvDeBwqR5mEUKScwoWxONufO3BWYarhjdBgYp9ofUvyZ3xo-TpLOiyGieStXFHn3K5T85Y8MSE_nFIGPDfnwGfKyENMfGjp6ZiZi3FcxqSD81jlAriF9bQc">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Fast Reflex</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 5: Slice Storm -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Slice Storm" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt6WVDqZMW8zJVXcJv_StnsOV6TRc0_yi3Ho-Mx_jA_9LBdM6h0sN77PYCJTmRH_YrGZzmcElxEuUnClWo7eOtTF8XBVtkbG4KMXWYlhMtn-UdXOp9-8ZpGXFq3Uz2qE5kjodkbG-CRhTlj84czR2SYCy_RXSiHgyYC05gzF4T0EUdwAQiTsdpmG8o2iBDy758au8GyS6pPxau89pr2hQcLpbF__y5qW3rXuAc60IV0KyED_5DxQ7GyzEA3ZPurzRsTdY">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Blade Action</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 6: Cosmo Warrior -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Cosmo Warrior" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQeItkqfAmAOfC5pHHkMPqYhF_NiW-xnA4ufq9uznBMk4ssVuDltptnmLRl0jy-B1I3SDV9YpXY4ei_MmewzUzNQalnm7iHuLND5mesHIx5UlzNb-xelW7P8GftmvkauS6wUnFbvNk0yZ-acA-2KGvBs57wCA8dcvqtmQYiPWJJiy-RJ5DF54YaNIXLUIwFCAiVspPfLNR53saYEOsU2FpO1wTiGpqWa_581VuN-fsMCVaTvTFvRbmxNadTdpLbVgZM-g">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Sci-Fi Shooter</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 7: Toilet Tactics -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Toilet Tactics" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeRYmnihhpkIhkXWxDFBFRGcLFChwcVgxP-PVHDV-UOG1ChenSZ_QX0HslSeqfZEv6bY7XiU8SAQCPqKRf6dQAgb8rtCyPcO85YzsVHWW1wrLI9420238M37DWfcggtqTmFQzE2XXVcZyLerlw074VndH_gngjw6EMlXB3Cfq5L8r-5lIyECpR2mmkegOSQavd_I3Uwf3qua-uGQqCRZnDfJfEkXaDyLffVfLJi7IRJ4SA0YAr8Y-Dj_ezmcYLkdyHM70">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Arcade Comedy</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 8: Word Hunto -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Word Hunto" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKARQrQJbL50eJQfpZsNmq8765RnDGJbaQhC0X0mim-HlpM7nuGDjE7ZMkd08ZH9WsDZkvsYt71FsoexmoFTwnJNJ4n3DAiHJxD_-kKOf2OxJWQlhz_K9XnDeZrIhNYpeql9uCONqE1IywjRXez32PWsx1_BzUqvomikyHo2xjTxluXQfIdphA7K1JDB0kBItIPzNJLH2WEZv4V20PnC-DPXGYtyiIuv01mhBklYIIGa5iW5Xr1y9iIk30jSv1hvabHFc">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Brain Teaser</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 9: Bubble Blast Legend -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Bubble Blast Legend" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Mcz-YFh3AwsmB1jKsvk_vRigir2AKjGKGPISvbW54l7o_UGL69zDBZlpyeY19g6FW68Rf5YA3O5bY-NWVQmpy0kV8I8JmZybez2UI0DljzYlkVqFCxTZNQgMT6FoHZxICHYJjDAlVP3FSHxIfYuWcf3Ukw6DnPtQWYSrdCZWK6Y0uYwfzLzpkK8X6-XSiabqqIxWGzaDQqz5T5sFF6P1L6Sj-0QaVXiNjHZjJhrvq6l0v7ZJ3pwRgiyOKUIIhV_IOnI">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Color Match</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 10: Merge Master! -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Merge Master!" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArosr9NjxOpO5ibqT_WrMCaQ54GBctEkGUfNhGh8_6_9Pyn6mcM8uvf8VvfqshZx0VpXJcu1Gxa8hx-oPW8Bm5_XU2i0Fgd66ikttsghryqbLDtd_t5WPwK8Z1KQZxIzlTb5IcTO7EP9d9RNKuwtjbdZqYjQ2aufGffflJAyTUyK0gpIvq6sSclk8C9voSW2ovlQzYmmmfzAbqtSj-xvRiHcm0us0wy6acnLJq2iNfhw89yyTfHFj4uh8BF7cnyFztnCs">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Merge Puzzle</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 11: Wormzy -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Wormzy" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEJgYn5JubXuZ1QHngYgAQUYSFcUpZSdijPQRl49x6Vj6Zea11HqQDhF94v1DH83bxZQKqB4BaaGI1edyLeneT2UWBpTV_UJetjyQn9ojdIXuL_6ty4nQ9ThD_nJm8GAVuI01Er0cDThvEWpWTsZvkXOOvTzcS_amkNFibAiGxxSHR1vFTbT-bUoRsdHBi4o8vo08AzibqlrfMs5XHotJ-O5ixdZ1EuImTTAV0JbAWBrdqYeB2T4yNco8rfHh3rQhJNFc">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Snake Arena</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 12: Aqua Fill! -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Aqua Fill!" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVfhje5q5CZ0Oqoa99LinW238OGX9OIfBPQsH41AHCUWs-wm18T_xFEV5eNQ3KbRlVmaEkI7YdLZpsQZtEIOpdiq3ZIkUIVWAT3XzJ5Ddu0b17g-7-y4zmi8yu4YiSDAxAiFcg83levYLpBa3biwD5TT3Ua61BeA9mI1kZLITph2V2zWp8DEW5oCo4_dy3S9DAmz6I4pZ39PrM7BO7Fd885bm9fV0699WwMgGdV4aXxOq3JMNT7cvzQCi5qUAWJSRkRaQ">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold">Fluid Physics</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+<!-- Card 13: Realm Clash! -->
+<div class="snap-center shrink-0 w-[86vw] max-w-[340px] flex flex-col rounded-lg overflow-hidden bg-surface-container shadow-[0_12px_32px_-4px_rgba(10,12,22,0.65)] group">
+<div class="relative w-full h-[360px] overflow-hidden bg-surface-container-lowest">
+<img alt="Realm Clash!" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUjPHUXjlz8FlCQcMS1J1V2z8k1FNh66zSPbdy6pDbCI3w584fD8ge1lw9vAhhmKbzbq7Sb5LTDYOpKYBW-TMkoX79Kd-sLShMWHZVn9VtXCYu9v-_m__eABnPBDVWXPRv2VoofXO3ypVZ9gj6LMznfN9THqbFWE4bmVwG1_HFyP9V9a8Q0O_dCFZ7AvpJFkUB7E8q4OjcddSCP9nC0Vi9Xb0HrByRoC56hZDoI4SW72hiSxTWpwD99UYGZOA_CoY0W3o">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-3 left-3 px-space-xs py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Epic Battle</span>
+</div>
+</div>
+<div class="p-space-sm flex items-center justify-between bg-surface-container-high">
+<div class="flex items-center gap-space-xs min-w-0">
+<img alt="Token" class="w-6 h-6 shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VZ_KtXtehWC2BuKaBhd34rQwKgggWND0qc24n_qqT7xPP3hdA3u4c3T-QFgEoqcpMbVqVSX_5WMFbT4-MvPtK2jIukxDN8QHkCLcp8_g5O21Yy8DXG6aBO0I7iX7Y5YTr4Kpmg8FEkVSC6jZvEtgd_9zcHsqbeiu9z3cRDlOOcsEbwkb0HG-R8C6En_6x5q-v2ze8QzKC9s0izwY6QxX7ozvg0hJ9iUibxmZEI-MZke0gf18jslrGMv-3A">
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-secondary font-bold leading-tight">+20 Tokens</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">+20 XP</span>
+</div>
+</div>
+<button class="relative overflow-hidden inline-flex items-center justify-center h-11 px-space-md rounded-full bg-gradient-to-r from-primary-container to-primary text-on-primary font-headline-sm text-label-lg font-bold shadow-[0_0_14px_rgba(96,165,250,0.4)] active:scale-95 transition-transform shrink-0" type="button">
+<span class="relative z-10 flex items-center gap-1">Play Now <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span></span>
+<div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/35 to-transparent -translate-x-full animate-[shimmer_2.4s_infinite]"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Indicator Dots & Slide Counter -->
+<div class="flex items-center justify-between px-gutter-mobile pt-space-xs pb-space-sm">
+<div class="flex items-center gap-1" id="carousel-dots">
+<!-- Generated dots -->
+<span class="w-5 h-1.5 rounded-full bg-primary transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300"></span>
+</div>
+<div class="flex items-center gap-space-xxs">
+<span class="font-label-sm text-label-sm text-primary font-bold" id="active-index">1</span>
+<span class="font-label-sm text-label-sm text-outline-variant">/</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">13 Games</span>
+</div>
+</div>
+</div>
+<!-- Live Marquee Ticker: Recent Winners -->
+<div class="mx-gutter-mobile my-space-xs rounded-lg bg-surface-container-low p-space-sm flex items-center gap-space-sm overflow-hidden">
+<div class="flex items-center gap-1 shrink-0 px-space-xs py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-sm">stars</span>
+<span class="">LIVE</span>
+</div>
+<div class="flex-1 overflow-hidden whitespace-nowrap relative">
+<div class="inline-flex gap-space-lg animate-[marquee_18s_linear_infinite]">
+<span class="font-body-sm text-body-sm text-on-surface inline-flex items-center gap-1">
+<strong class="text-primary font-semibold">@AlexK</strong> won +140 VE in Blade Master
+        </span>
+<span class="text-outline-variant">•</span>
+<span class="font-body-sm text-body-sm text-on-surface inline-flex items-center gap-1">
+<strong class="text-primary font-semibold">@Zack99</strong> scored 4,200 in Nutcraft
+        </span>
+<span class="text-outline-variant">•</span>
+<span class="font-body-sm text-body-sm text-on-surface inline-flex items-center gap-1">
+<strong class="text-primary font-semibold">@Elena_V</strong> claimed +200 VE Bonus
+        </span>
+<span class="text-outline-variant">•</span>
+<span class="font-body-sm text-body-sm text-on-surface inline-flex items-center gap-1">
+<strong class="text-primary font-semibold">@DmitriR</strong> beat high score in Word Hunto
+        </span>
+</div>
+</div>
+</div>
+<!-- Daily Quests & Challenges Preview Banner -->
+
+<script>
+    (function () {
+      const carousel = document.getElementById('games-carousel');
+      const dotsContainer = document.getElementById('carousel-dots');
+      const indexDisplay = document.getElementById('active-index');
+      const swipeHint = document.getElementById('swipe-hint');
+
+      if (!carousel || !dotsContainer) return;
+
+      const dots = dotsContainer.querySelectorAll('span');
+      let isFirstScroll = true;
+
+      const updateActiveIndex = () => {
+        const scrollLeft = carousel.scrollLeft;
+        const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.getBoundingClientRect().width : 300;
+        const gap = 12; // gap-space-sm
+        const currentIndex = Math.round(scrollLeft / (cardWidth + gap));
+        const safeIndex = Math.max(0, Math.min(currentIndex, dots.length - 1));
+
+        if (indexDisplay) {
+          indexDisplay.textContent = String(safeIndex + 1);
+        }
+
+        dots.forEach((dot, idx) => {
+          if (idx === safeIndex) {
+            dot.className = 'w-5 h-1.5 rounded-full bg-primary transition-all duration-300';
+          } else {
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-surface-container-highest transition-all duration-300';
+          }
+        });
+
+        if (isFirstScroll && scrollLeft > 20) {
+          isFirstScroll = false;
+          if (swipeHint) {
+            swipeHint.style.opacity = '0';
+          }
+        }
+      };
+
+      carousel.addEventListener('scroll', updateActiveIndex, { passive: true });
+
+      // Click dots to scroll to that slide
+      dots.forEach((dot, i) => {
+        dot.style.cursor = 'pointer';
+        dot.addEventListener('click', () => {
+          const cards = carousel.children;
+          if (cards[i]) {
+            cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        });
+      });
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.4)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xxs min-w-[56px] min-h-[44px] transition-colors text-primary font-bold" data-path="games" href="#"><span class="material-symbols-outlined text-2xl">sports_esports</span><span class="font-label-sm text-label-sm">Games</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="quests" href="#"><span class="material-symbols-outlined text-2xl">explore</span><span class="font-label-sm text-label-sm">Quests</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="leaderboard" href="#"><span class="material-symbols-outlined text-2xl">leaderboard</span><span class="font-label-sm text-label-sm">Ranks</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="wallet" href="#"><span class="material-symbols-outlined text-2xl">account_balance_wallet</span><span class="font-label-sm text-label-sm">Wallet</span></a><a class="flex flex-col items-center justify-center gap-space-xxs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-2xl">person</span><span class="font-label-sm text-label-sm">Profile</span></a></div></nav></body></html>
