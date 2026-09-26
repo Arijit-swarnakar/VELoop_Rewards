@@ -1,6 +1,6 @@
 .page {
-  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md) 100px;
   min-height: calc(100vh - 72px);
+  padding-bottom: clamp(3rem, 6vw, 6rem);
 }
