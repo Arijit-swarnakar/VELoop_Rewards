@@ -4,7 +4,6 @@ import CarouselDots from '../CarouselDots/CarouselDots';
 import styles from './GamesCarousel.module.css';
 
 const AUTOPLAY_INTERVAL = 3500;
-const CARD_WIDTH = 346; // 330px card + 16px gap
 
 export default function GamesCarousel({ games }) {
   const trackRef = useRef(null);
@@ -23,21 +22,28 @@ export default function GamesCarousel({ games }) {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Scroll to a specific card dynamically based on element position
   const scrollTo = useCallback((index) => {
     const el = trackRef.current;
     if (!el) return;
     const clampedIndex = Math.max(0, Math.min(index, games.length - 1));
-    el.scrollTo({ left: clampedIndex * CARD_WIDTH, behavior: 'smooth' });
+    const targetItem = el.children[clampedIndex];
+    if (targetItem) {
+      const scrollPos = targetItem.offsetLeft - el.offsetLeft;
+      el.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
     setActiveIndex(clampedIndex);
   }, [games.length]);
 
+  // Advance by 1 card smoothly
   const advance = useCallback(() => {
     if (pausedRef.current) return;
-    setActiveIndex(prev => {
+    setActiveIndex((prev) => {
       const next = (prev + 1) % games.length;
       const el = trackRef.current;
-      if (el) {
-        el.scrollTo({ left: next * CARD_WIDTH, behavior: 'smooth' });
+      if (el && el.children[next]) {
+        const scrollPos = el.children[next].offsetLeft - el.offsetLeft;
+        el.scrollTo({ left: scrollPos, behavior: 'smooth' });
       }
       return next;
     });
@@ -64,13 +70,25 @@ export default function GamesCarousel({ games }) {
     return () => clearInterval(autoplayRef.current);
   }, [advance, prefersReducedMotion]);
 
-  // Sync active dot on scroll
+  // Sync active dot on scroll by finding the closest card
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
     const handler = () => {
-      const idx = Math.round(el.scrollLeft / CARD_WIDTH);
-      setActiveIndex(Math.max(0, Math.min(idx, games.length - 1)));
+      const children = Array.from(el.children);
+      if (!children.length) return;
+      const currentScroll = el.scrollLeft;
+      let closestIdx = 0;
+      let minDiff = Infinity;
+      children.forEach((child, idx) => {
+        const offset = child.offsetLeft - el.offsetLeft;
+        const diff = Math.abs(offset - currentScroll);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      setActiveIndex(closestIdx);
     };
     el.addEventListener('scroll', handler, { passive: true });
     return () => el.removeEventListener('scroll', handler);
