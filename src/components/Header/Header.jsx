@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useGame } from '../../context/GameContext';
 import AuthModal from '../AuthModal/AuthModal';
@@ -23,6 +23,27 @@ export default function Header() {
   const [showNotifs, setShowNotifs] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  // Lock body scroll when mobile drawer or menu is open
+  useEffect(() => {
+    if (showProfile || showMobileMenu || showNotifs) {
+      if (typeof window !== 'undefined' && window.innerWidth < 768) {
+        document.body.style.overflow = 'hidden';
+      }
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showProfile, showMobileMenu, showNotifs]);
+
+  // Close menus on route change
+  useEffect(() => {
+    setShowNotifs(false);
+    setShowProfile(false);
+    setShowMobileMenu(false);
+  }, [location.pathname]);
 
   // Auth modal state
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -283,20 +304,31 @@ export default function Header() {
           </button>
 
           {/* -------------------------------------------------------------
-              Notifications Dropdown Panel
+              Notifications Dropdown / Sheet Panel
               ------------------------------------------------------------- */}
           {showNotifs && (
-            <div className={styles.dropdownPanel} role="dialog" aria-label="Notifications panel">
+            <div className={`${styles.dropdownPanel} ${styles.notifPanel}`} role="dialog" aria-modal="true" aria-label="Notifications panel">
+              <div className={styles.dragHandle} aria-hidden="true" />
               <div className={styles.notifHeader}>
                 <h3 className={styles.notifTitle}>
                   <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#60a5fa' }}>notifications</span>
                   Notifications {unreadCount > 0 && `(${unreadCount})`}
                 </h3>
-                {unreadCount > 0 && (
-                  <button type="button" className={styles.markReadBtn} onClick={handleMarkAllRead}>
-                    Mark all read
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  {unreadCount > 0 && (
+                    <button type="button" className={styles.markReadBtn} onClick={handleMarkAllRead}>
+                      Mark all read
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    className={styles.sheetCloseBtn}
+                    onClick={closeAll}
+                    aria-label="Close notifications"
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
                   </button>
-                )}
+                </div>
               </div>
 
               <div className={styles.notifList}>
@@ -339,10 +371,11 @@ export default function Header() {
           )}
 
           {/* -------------------------------------------------------------
-              User Profile Dropdown Panel
+              User Profile Dropdown / Mobile Bottom Sheet Panel
               ------------------------------------------------------------- */}
           {showProfile && (
-            <div className={styles.dropdownPanel} role="dialog" aria-label="Player Profile">
+            <div className={`${styles.dropdownPanel} ${styles.profilePanel}`} role="dialog" aria-modal="true" aria-label="Player Profile">
+              <div className={styles.dragHandle} aria-hidden="true" />
               {user?.isLoggedIn ? (
                 /* Logged In View */
                 <>
@@ -357,20 +390,28 @@ export default function Header() {
                       <h3 className={styles.profileName}>{user.name}</h3>
                       <div className={styles.profileTierRow}>
                         <span className={styles.profileTierBadge}>VIP Level {user.vipLevel}</span>
-                        <span style={{ fontSize: 11, color: '#94a3b8' }}>{user.vipTier || 'Gold Tier'}</span>
+                        <span className={styles.profileTierLabel}>• {user.vipTier || 'Gold Tier'}</span>
                       </div>
                     </div>
+                    <button
+                      type="button"
+                      className={styles.sheetCloseBtn}
+                      onClick={closeAll}
+                      aria-label="Close profile drawer"
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
+                    </button>
                   </div>
 
                   <div className={styles.profileBody}>
                     {/* Direct Profile Action Buttons */}
                     <div className={styles.profileBtnRow}>
                       <Link to="/profile" className={styles.profilePrimaryBtn} onClick={closeAll}>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>account_circle</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 17 }}>account_circle</span>
                         My Profile
                       </Link>
                       <Link to="/profile?edit=true" className={styles.profileSecondaryBtn} onClick={closeAll}>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 17 }}>edit</span>
                         Update Profile
                       </Link>
                     </div>
@@ -378,8 +419,8 @@ export default function Header() {
                     {/* XP Progress to VIP Next */}
                     <div className={styles.xpSection}>
                       <div className={styles.xpHeader}>
-                        <span>Progress to VIP {user.vipLevel + 1}</span>
-                        <strong style={{ color: '#fff' }}>
+                        <span className={styles.xpTitle}>Progress to VIP {user.vipLevel + 1}</span>
+                        <strong className={styles.xpValue}>
                           {(user.xp || 7450).toLocaleString()} / {(user.xpNext || 10000).toLocaleString()} XP
                         </strong>
                       </div>
@@ -397,64 +438,63 @@ export default function Header() {
                     <div className={styles.profileBalances}>
                       <div className={styles.profileBalCard}>
                         <img src="/assets/images/game-coin.jpeg" alt="Coins" style={{ mixBlendMode: 'screen' }} />
-                        <div>
+                        <div className={styles.profileBalText}>
                           <div className={styles.profileBalNum}>{coinBalance.toLocaleString()}</div>
                           <div className={styles.profileBalLabel}>Game Coins</div>
                         </div>
                       </div>
                       <div className={styles.profileBalCard}>
                         <img src="/assets/images/token.jpeg" alt="Tokens" style={{ mixBlendMode: 'screen' }} />
-                        <div>
+                        <div className={styles.profileBalText}>
                           <div className={styles.profileBalNum}>{tokenBalance}</div>
                           <div className={styles.profileBalLabel}>Match Tokens</div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Quick Refills */}
+                    {/* Action Buttons: Primary, Secondary, Danger */}
                     <div className={styles.profileActions}>
                       <button
                         type="button"
-                        className={styles.demoActionBtn}
+                        className={`${styles.demoActionBtn} ${styles.actionBtnPrimary}`}
                         onClick={() => addTokens(50)}
                       >
                         <span>+ Add 50 Demo Tokens</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#38bdf8' }}>add_circle</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>add_circle</span>
                       </button>
                       <button
                         type="button"
-                        className={styles.demoActionBtn}
+                        className={`${styles.demoActionBtn} ${styles.actionBtnSecondary}`}
                         onClick={() => addCoins(500)}
                       >
                         <span>+ Add 500 Game Coins</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#ffb95f' }}>paid</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#fbbf24' }}>paid</span>
                       </button>
                       <button
                         type="button"
-                        className={styles.demoActionBtn}
+                        className={`${styles.demoActionBtn} ${styles.actionBtnDanger}`}
                         onClick={resetDemo}
-                        style={{ color: '#f87171', borderColor: 'rgba(239, 68, 68, 0.2)' }}
                       >
                         <span>Reset Demo Data</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>restart_alt</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>restart_alt</span>
                       </button>
                     </div>
 
                     {/* Quick Navigation Links */}
-                    <div className={styles.profileNavLinks}>
+                    <nav className={styles.profileNavLinks} aria-label="Account navigation">
                       <Link to="/rewards" className={styles.profileNavLink} onClick={closeAll}>
-                        <span>Rewards Store &amp; Exchange</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                        <span className={styles.navLinkLabel}>Rewards Store &amp; Exchange</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_right</span>
                       </Link>
                       <Link to="/leaderboard" className={styles.profileNavLink} onClick={closeAll}>
-                        <span>Competitive Leaderboard</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                        <span className={styles.navLinkLabel}>Competitive Leaderboard</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_right</span>
                       </Link>
                       <Link to="/" className={styles.profileNavLink} onClick={handleGoHome}>
-                        <span>VELoop Games Home</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                        <span className={styles.navLinkLabel}>VELoop Games Home</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_right</span>
                       </Link>
-                    </div>
+                    </nav>
 
                     {/* Log Out Button */}
                     <button
@@ -466,7 +506,7 @@ export default function Header() {
                       }}
                     >
                       <span>Log Out of Account</span>
-                      <span className="material-symbols-outlined" style={{ fontSize: 16 }}>logout</span>
+                      <span className="material-symbols-outlined" style={{ fontSize: 18 }}>logout</span>
                     </button>
                   </div>
                 </>
@@ -485,6 +525,14 @@ export default function Header() {
                         </span>
                       </div>
                     </div>
+                    <button
+                      type="button"
+                      className={styles.sheetCloseBtn}
+                      onClick={closeAll}
+                      aria-label="Close profile drawer"
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
+                    </button>
                   </div>
 
                   <div className={styles.profileBody}>
@@ -497,7 +545,7 @@ export default function Header() {
                         className={`${styles.guestActionBtn} ${styles.guestSignInBtn}`}
                         onClick={() => openAuth('signin')}
                       >
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>login</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>login</span>
                         Sign In
                       </button>
                       <button
@@ -505,14 +553,14 @@ export default function Header() {
                         className={`${styles.guestActionBtn} ${styles.guestSignUpBtn}`}
                         onClick={() => openAuth('signup')}
                       >
-                        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>person_add</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>person_add</span>
                         Create Account (+50 Tokens)
                       </button>
                     </div>
 
                     <button
                       type="button"
-                      className={styles.demoActionBtn}
+                      className={`${styles.demoActionBtn} ${styles.actionBtnSecondary}`}
                       onClick={() => {
                         login({
                           name: 'Alex Morgan',
@@ -525,21 +573,21 @@ export default function Header() {
                       style={{ marginBottom: 14, borderColor: 'rgba(251, 191, 36, 0.4)' }}
                     >
                       <span style={{ color: '#fbbf24' }}>⚡ Instant VIP 4 Demo Login</span>
-                      <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#fbbf24' }}>bolt</span>
+                      <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#fbbf24' }}>bolt</span>
                     </button>
 
                     {/* Balances */}
                     <div className={styles.profileBalances}>
                       <div className={styles.profileBalCard}>
                         <img src="/assets/images/game-coin.jpeg" alt="Coins" style={{ mixBlendMode: 'screen' }} />
-                        <div>
+                        <div className={styles.profileBalText}>
                           <div className={styles.profileBalNum}>{coinBalance.toLocaleString()}</div>
                           <div className={styles.profileBalLabel}>Game Coins</div>
                         </div>
                       </div>
                       <div className={styles.profileBalCard}>
                         <img src="/assets/images/token.jpeg" alt="Tokens" style={{ mixBlendMode: 'screen' }} />
-                        <div>
+                        <div className={styles.profileBalText}>
                           <div className={styles.profileBalNum}>{tokenBalance}</div>
                           <div className={styles.profileBalLabel}>Match Tokens</div>
                         </div>
@@ -550,11 +598,11 @@ export default function Header() {
                     <div className={styles.profileActions}>
                       <button
                         type="button"
-                        className={styles.demoActionBtn}
+                        className={`${styles.demoActionBtn} ${styles.actionBtnPrimary}`}
                         onClick={() => addTokens(50)}
                       >
                         <span>+ Add 50 Demo Tokens</span>
-                        <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#38bdf8' }}>add_circle</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>add_circle</span>
                       </button>
                     </div>
                   </div>

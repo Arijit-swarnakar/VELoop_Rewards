@@ -237,7 +237,7 @@ export default function RedeemPage() {
         <span className={styles.demoDisclaimer}>*Illustrative demo rates</span>
       </div>
 
-      <div className={styles.grid}>
+      <div className={styles.grid} id="redeem-options">
         {REDEEM_OPTIONS.map((opt) => (
           <article key={opt.id} className={styles.card}>
             <div className={styles.cardBanner}>
@@ -386,49 +386,103 @@ export default function RedeemPage() {
         </div>
       )}
 
-      {/* Redemption History Table */}
+      {/* Redemption History Section */}
       <section className={styles.historySection}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Recent Redemption History</h2>
-          <Link to="/" style={{ color: '#60a5fa', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>
+          <Link to="/" className={styles.backToGamesLink}>
             Back to Games
           </Link>
         </div>
 
-        <table className={styles.historyTable}>
-          <thead>
-            <tr>
-              <th className={styles.historyTh}>Item</th>
-              <th className={styles.historyTh}>Quantity</th>
-              <th className={styles.historyTh}>Coins Spent</th>
-              <th className={styles.historyTh}>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {redemptionHistory.length === 0 ? (
+        {/* Desktop / Tablet Table View */}
+        <div className={styles.desktopTableWrapper}>
+          <table className={styles.historyTable}>
+            <thead>
               <tr>
-                <td colSpan={4} className={styles.historyEmpty}>
-                  No redemptions yet. Convert your Game Coins to see your history here!
-                </td>
+                <th className={styles.historyTh}>Item</th>
+                <th className={styles.historyTh}>Quantity</th>
+                <th className={styles.historyTh}>Coins Spent</th>
+                <th className={styles.historyTh}>Date</th>
               </tr>
-            ) : (
-              redemptionHistory.map((item) => (
-                <tr key={item.id}>
-                  <td className={styles.historyTd}>
-                    <strong>{item.label}</strong>
-                  </td>
-                  <td className={styles.historyTd}>+{item.unitsReceived}</td>
-                  <td className={styles.historyTd} style={{ color: '#ffb95f' }}>
-                    -{item.coinsSpent.toLocaleString()} Coins
-                  </td>
-                  <td className={styles.historyTd} style={{ color: '#94a3b8' }}>
-                    {new Date(item.timestamp).toLocaleDateString()} {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </thead>
+            <tbody>
+              {redemptionHistory.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className={styles.historyEmpty}>
+                    No redemptions yet. Convert your Game Coins to see your history here!
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                redemptionHistory.map((item) => (
+                  <tr key={item.id}>
+                    <td className={styles.historyTd}>
+                      <strong>{item.label}</strong>
+                    </td>
+                    <td className={styles.historyTd}>+{item.unitsReceived}</td>
+                    <td className={styles.historyTd} style={{ color: '#ffb95f' }}>
+                      -{item.coinsSpent.toLocaleString()} Coins
+                    </td>
+                    <td className={styles.historyTd} style={{ color: '#94a3b8' }}>
+                      {new Date(item.timestamp).toLocaleDateString()} {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile Responsive Cards View */}
+        <div className={styles.mobileHistoryWrapper}>
+          {redemptionHistory.length === 0 ? (
+            <div className={styles.mobileEmptyState}>
+              <div className={styles.emptyIconWrap}>
+                <span className="material-symbols-outlined" style={{ fontSize: 26, color: '#60a5fa' }}>receipt_long</span>
+              </div>
+              <h3 className={styles.emptyTitle}>No redemptions yet</h3>
+              <p className={styles.emptyDesc}>Convert Game Coins to see your redemption history here.</p>
+              <button
+                type="button"
+                className={styles.emptyConvertBtn}
+                onClick={() => {
+                  const el = document.getElementById('redeem-options');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>swap_horiz</span>
+                Convert Coins
+              </button>
+            </div>
+          ) : (
+            <div className={styles.mobileCardList}>
+              {redemptionHistory.map((item) => (
+                <div key={item.id} className={styles.mobileRedemptionCard}>
+                  <div className={styles.mobileCardHeader}>
+                    <span className={styles.mobileCardTitle}>{item.label}</span>
+                    <span className={styles.mobileCardBadge}>+{item.unitsReceived}</span>
+                  </div>
+                  <div className={styles.mobileCardGrid}>
+                    <div className={styles.mobileCardRow}>
+                      <span className={styles.mobileCardLabel}>Quantity</span>
+                      <span className={styles.mobileCardVal}>{item.unitsReceived}</span>
+                    </div>
+                    <div className={styles.mobileCardRow}>
+                      <span className={styles.mobileCardLabel}>Coins Spent</span>
+                      <span className={styles.mobileCardCoins}>-{item.coinsSpent.toLocaleString()} Coins</span>
+                    </div>
+                    <div className={styles.mobileCardRow}>
+                      <span className={styles.mobileCardLabel}>Date</span>
+                      <span className={styles.mobileCardDate}>
+                        {new Date(item.timestamp).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );

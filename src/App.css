@@ -1,18 +1,34 @@
 .app {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .main-content {
   flex: 1;
-  padding-top: 80px;
-  padding-bottom: 40px;
+  padding-top: calc(64px + env(safe-area-inset-top, 0px));
+  padding-bottom: max(32px, env(safe-area-inset-bottom, 0px));
   max-width: var(--max-w);
   margin: 0 auto;
   width: 100%;
-  padding-left: var(--gutter-mobile);
-  padding-right: var(--gutter-mobile);
+  min-width: 0;
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    padding-left: var(--gutter-desktop);
+    padding-right: var(--gutter-desktop);
+  }
 }
 
 @media (min-width: 1024px) {

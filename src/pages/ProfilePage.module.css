@@ -1,11 +1,23 @@
-/* ProfilePage.module.css - Stitch Cyberpunk Dark Theme */
-
 .profilePage {
   min-height: calc(100vh - 80px);
-  padding: var(--space-xl) var(--margin-desktop) 60px;
+  padding: 16px 16px 60px;
   max-width: var(--max-w);
   margin: 0 auto;
   animation: fadeIn 0.25s ease-out;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .profilePage {
+    padding: var(--space-xl) var(--gutter-desktop) 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profilePage {
+    padding: var(--space-xl) var(--margin-desktop) 60px;
+  }
 }
 
 @keyframes fadeIn {
@@ -127,6 +139,39 @@
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+@media (max-width: 767px) {
+  .heroCard {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .heroMain {
+    gap: 16px;
+  }
+
+  .heroLeft {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .heroName {
+    font-size: 1.4rem;
+  }
+
+  .heroActions {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .editBtn, .logoutBtn {
+    flex: 1;
+    min-height: 48px;
+    justify-content: center;
+  }
 }
 
 .avatarWrap {
@@ -485,11 +530,14 @@
 }
 
 @media (max-width: 900px) {
-  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .statsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 480px) {
-  .statsGrid { grid-template-columns: 1fr; }
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
 }
 
 .statCard {

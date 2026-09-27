@@ -7,17 +7,33 @@
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(65, 71, 81, 0.4);
   box-shadow: 0 12px 32px -4px rgba(10, 12, 22, 0.65);
+  height: 64px;
+  padding: 0 16px;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+    padding: 0 var(--gutter-desktop);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 0 var(--margin-desktop);
+  }
 }
 
 .inner {
-  height: 80px;
+  height: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 var(--margin-desktop);
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   position: relative;
 }
 
@@ -26,18 +42,20 @@
   display: flex;
   align-items: center;
   gap: var(--space-xl);
+  min-width: 0;
 }
 
 .logoLink {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 8px;
   text-decoration: none;
+  min-height: 44px;
 }
 
 .logoIcon {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: #000000;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -48,6 +66,13 @@
   overflow: hidden;
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .logoIcon {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 .logoLink:hover .logoIcon {
@@ -66,22 +91,35 @@
 
 .logoName {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-on-surface);
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .logoName {
+    font-size: 1.1rem;
+  }
 }
 
 .logoBadge {
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
   background: rgba(238, 152, 0, 0.15);
   color: var(--color-secondary);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+@media (max-width: 380px) {
+  .logoBadge {
+    display: none;
+  }
 }
 
 /* Desktop Nav */
@@ -113,8 +151,15 @@
 .right {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 8px;
   position: relative;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .right {
+    gap: var(--space-md);
+  }
 }
 
 .balancePill {
@@ -134,7 +179,7 @@
   border-color: rgba(96, 165, 250, 0.4);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .balancePill { display: flex; }
 }
 
@@ -165,13 +210,14 @@
   background: rgba(65, 71, 81, 0.4);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .divider { display: none; }
 }
 
-/* Icon Buttons */
+/* Icon Buttons with 44px min touch target */
 .iconBtn {
-  width: 38px; height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: transparent;
   border: 1px solid transparent;
@@ -179,7 +225,7 @@
   display: flex; align-items: center; justify-content: center;
   color: var(--color-on-surface-variant);
   position: relative;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
 }
 
 .iconBtn:hover, .iconBtnActive {
@@ -188,43 +234,42 @@
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+.iconBtn:active {
+  transform: scale(0.96);
+}
+
 .notifDot {
   position: absolute;
-  top: 7px; right: 7px;
+  top: 10px; right: 10px;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: #ef4444;
   box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
 }
 
-.notifCount {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  background: #ef4444;
-  color: #fff;
-  border-radius: 10px;
-  padding: 1px 5px;
-  font-size: 9px;
-  font-weight: 800;
-}
-
-/* User Button */
+/* User Button with 44px min touch target */
 .userBtn {
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-full);
-  padding: 4px 6px;
+  padding: 4px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xs);
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
 }
 
 .userBtn:hover, .userBtnActive {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.15);
+}
+
+.userBtn:active {
+  transform: scale(0.96);
 }
 
 .userInfo {
@@ -265,18 +310,23 @@
   transform: scale(1.05);
 }
 
-/* Mobile Hamburger Button */
+/* Mobile Hamburger Button with 44px min touch target */
 .mobileMenuBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #e2e8f0;
   cursor: pointer;
+  transition: transform 0.1s, background 0.15s;
+}
+
+.mobileMenuBtn:active {
+  transform: scale(0.96);
 }
 
 @media (min-width: 1024px) {
@@ -284,32 +334,115 @@
 }
 
 /* -------------------------------------------------------------
-   Dropdown Containers
+   Backdrop Overlay
    ------------------------------------------------------------- */
 .dropdownOverlay {
   position: fixed;
   inset: 0;
-  z-index: 99;
+  background: rgba(5, 7, 18, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 150;
+  animation: overlayFadeIn 0.2s ease-out;
 }
 
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* -------------------------------------------------------------
+   Dropdown Containers: Desktop Popover & Mobile Bottom Sheet
+   ------------------------------------------------------------- */
 .dropdownPanel {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 360px;
-  max-width: calc(100vw - 32px);
+  z-index: 200;
   background: #14172a;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65);
-  z-index: 101;
   overflow: hidden;
-  animation: dropdownIn 0.2s ease-out;
+}
+
+/* Drag indicator for mobile bottom sheet */
+.dragHandle {
+  display: none;
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  margin: 10px auto 4px;
+}
+
+/* Close button for sheet headers */
+.sheetCloseBtn {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #94a3b8;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sheetCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Desktop styles: >= 768px */
+@media (min-width: 768px) {
+  .dropdownPanel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 360px;
+    max-width: calc(100vw - 32px);
+    border-radius: 20px;
+    animation: dropdownIn 0.2s ease-out;
+  }
+}
+
+/* Mobile styles: < 768px (Bottom Sheet / Account Drawer) */
+@media (max-width: 767px) {
+  .dropdownPanel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    max-width: 100vw;
+    border-radius: 24px 24px 0 0;
+    border-bottom: none;
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 -16px 40px rgba(0, 0, 0, 0.85);
+    padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
+    animation: sheetSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dragHandle {
+    display: block;
+  }
+
+  .sheetCloseBtn {
+    display: flex;
+  }
 }
 
 @keyframes dropdownIn {
   from { opacity: 0; transform: translateY(-8px) scale(0.98); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 /* -------------------------------------------------------------
@@ -342,16 +475,19 @@
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 4px 6px;
+  border-radius: 4px;
 }
 
 .markReadBtn:hover {
   text-decoration: underline;
+  background: rgba(96, 165, 250, 0.1);
 }
 
 .notifList {
   max-height: 380px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .notifItem {
@@ -388,6 +524,7 @@
 
 .notifContent {
   flex: 1;
+  min-width: 0;
 }
 
 .notifText {
@@ -411,7 +548,7 @@
 }
 
 .notifFooter {
-  padding: 10px 16px;
+  padding: 12px 16px;
   background: #101221;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -421,8 +558,9 @@
   background: transparent;
   border: none;
   color: #94a3b8;
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
+  padding: 6px 12px;
 }
 
 .clearNotifsBtn:hover {
@@ -433,7 +571,7 @@
    User Profile Panel Content
    ------------------------------------------------------------- */
 .profileHeader {
-  padding: 20px 18px;
+  padding: 16px 18px;
   background: linear-gradient(135deg, #1e2544 0%, #101221 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
@@ -442,8 +580,8 @@
 }
 
 .profileAvatarLarge {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   border: 2px solid #fbbf24;
@@ -451,12 +589,14 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 26px;
+  font-size: 24px;
   box-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+  flex-shrink: 0;
 }
 
 .profileIdentity {
   flex: 1;
+  min-width: 0;
 }
 
 .profileName {
@@ -464,14 +604,17 @@
   font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  margin: 0;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profileTierRow {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: 2px;
+  flex-wrap: wrap;
 }
 
 .profileTierBadge {
@@ -482,6 +625,12 @@
   padding: 1px 6px;
   font-size: 10px;
   font-weight: 700;
+}
+
+.profileTierLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
 }
 
 .profileBody {
@@ -496,29 +645,41 @@
 .xpHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
   font-size: 11px;
   color: #94a3b8;
   margin-bottom: 6px;
 }
 
+.xpTitle {
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.xpValue {
+  color: #ffffff;
+  font-weight: 700;
+}
+
 .xpTrack {
-  height: 6px;
+  height: 8px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .xpFill {
   height: 100%;
-  width: 74%;
   background: linear-gradient(90deg, #2563eb, #38bdf8);
-  border-radius: 4px;
+  border-radius: var(--radius-full);
 }
 
-/* Balances Grid in Profile */
+/* Currency Cards */
 .profileBalances {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 16px;
 }
@@ -526,79 +687,128 @@
 .profileBalCard {
   background: #101221;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 10px 12px;
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .profileBalCard img {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.profileBalText {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .profileBalNum {
-  font-size: 13px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
   font-weight: 700;
   color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profileBalLabel {
   font-size: 9px;
   color: #94a3b8;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
-/* Demo Actions */
+/* Action Buttons */
 .profileActions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 16px;
 }
 
 .demoActionBtn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 12px;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   transition: all 0.15s;
+  box-sizing: border-box;
 }
 
-.demoActionBtn:hover {
-  background: rgba(96, 165, 250, 0.15);
-  border-color: rgba(96, 165, 250, 0.35);
+.demoActionBtn:active {
+  transform: scale(0.98);
+}
+
+/* Action Button Hierarchy: Primary, Secondary, Danger */
+.actionBtnPrimary {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.actionBtnPrimary:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  filter: brightness(1.08);
+}
+
+.actionBtnSecondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+.actionBtnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
+.actionBtnDanger {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+}
+
+.actionBtnDanger:hover {
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+}
+
+/* Account Navigation Links */
 .profileNavLinks {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 12px;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .profileNavLink {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
-  border-radius: 8px;
-  color: #94a3b8;
+  min-height: 52px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #cbd5e1;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   transition: background 0.15s, color 0.15s;
+  box-sizing: border-box;
 }
 
 .profileNavLink:hover {
@@ -606,9 +816,17 @@
   color: #ffffff;
 }
 
+.profileNavLink:active {
+  transform: scale(0.98);
+}
+
+.navLinkLabel {
+  flex: 1;
+}
+
 /* Nav Sign In Button */
 .signInNavBtn {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 6px;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
@@ -622,6 +840,13 @@
   cursor: pointer;
   transition: all 0.18s;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  min-height: 40px;
+}
+
+@media (min-width: 640px) {
+  .signInNavBtn {
+    display: flex;
+  }
 }
 
 .signInNavBtn:hover {
@@ -634,7 +859,7 @@
 .profileBtnRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 14px;
 }
 
@@ -642,9 +867,10 @@
   background: #2563eb;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 11px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
@@ -653,6 +879,7 @@
   justify-content: center;
   gap: 6px;
   transition: all 0.15s;
+  box-sizing: border-box;
 }
 
 .profilePrimaryBtn:hover {
@@ -660,13 +887,18 @@
   color: #ffffff;
 }
 
+.profilePrimaryBtn:active {
+  transform: scale(0.98);
+}
+
 .profileSecondaryBtn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #e2e8f0;
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 11px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 12px;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
@@ -675,11 +907,16 @@
   justify-content: center;
   gap: 6px;
   transition: all 0.15s;
+  box-sizing: border-box;
 }
 
 .profileSecondaryBtn:hover {
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
+}
+
+.profileSecondaryBtn:active {
+  transform: scale(0.98);
 }
 
 /* Guest Dropdown Box */
@@ -695,7 +932,7 @@
 }
 
 .guestAuthDesc {
-  font-size: 11px;
+  font-size: 12px;
   color: #cbd5e1;
   line-height: 1.4;
   margin: 0;
@@ -703,9 +940,10 @@
 
 .guestActionBtn {
   width: 100%;
-  padding: 9px 12px;
-  border-radius: 8px;
-  font-size: 12px;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -714,6 +952,11 @@
   gap: 6px;
   border: none;
   transition: all 0.15s;
+  box-sizing: border-box;
+}
+
+.guestActionBtn:active {
+  transform: scale(0.98);
 }
 
 .guestSignInBtn {
@@ -738,12 +981,13 @@
 
 /* Logout button in dropdown */
 .logoutDropdownBtn {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.08);
   border: 1px solid rgba(239, 68, 68, 0.25);
   color: #f87171;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 12px;
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-size: 13px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -751,11 +995,17 @@
   cursor: pointer;
   transition: all 0.15s;
   width: 100%;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .logoutDropdownBtn:hover {
   background: rgba(239, 68, 68, 0.2);
   color: #ffffff;
+}
+
+.logoutDropdownBtn:active {
+  transform: scale(0.98);
 }
 
 /* -------------------------------------------------------------
@@ -781,13 +1031,15 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  min-height: 48px;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   color: #e2e8f0;
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.1s;
+  box-sizing: border-box;
 }
 
 .mobileLink:hover, .mobileLinkActive {
@@ -795,9 +1047,6 @@
   color: #60a5fa;
 }
 
-/* Mobile responsive padding */
-@media (max-width: 575px) {
-  .inner {
-    padding: 0 var(--gutter-mobile);
-  }
+.mobileLink:active {
+  transform: scale(0.98);
 }
