@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useGame } from '../../context/GameContext';
 import AuthModal from '../AuthModal/AuthModal';
@@ -18,25 +18,12 @@ export default function Header() {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const headerRef = useRef(null);
 
   // Dropdown states
   const [showNotifs, setShowNotifs] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-
-  // Lock body scroll when mobile drawer or menu is open
-  useEffect(() => {
-    if (showProfile || showMobileMenu || showNotifs) {
-      if (typeof window !== 'undefined' && window.innerWidth < 768) {
-        document.body.style.overflow = 'hidden';
-      }
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [showProfile, showMobileMenu, showNotifs]);
 
   // Close menus on route change
   useEffect(() => {
@@ -44,6 +31,26 @@ export default function Header() {
     setShowProfile(false);
     setShowMobileMenu(false);
   }, [location.pathname]);
+
+  // Robust outside click/touch listener for mobile and desktop
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (headerRef.current && headerRef.current.contains(e.target)) {
+        return;
+      }
+      closeAll();
+    };
+
+    if (showNotifs || showProfile || showMobileMenu) {
+      document.addEventListener('mousedown', handleOutsideClick);
+      document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [showNotifs, showProfile, showMobileMenu]);
 
   // Auth modal state
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -116,19 +123,25 @@ export default function Header() {
     }
   };
 
-  const toggleNotifs = () => {
+  const toggleNotifs = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setShowProfile(false);
     setShowMobileMenu(false);
     setShowNotifs((prev) => !prev);
   };
 
-  const toggleProfile = () => {
+  const toggleProfile = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setShowNotifs(false);
     setShowMobileMenu(false);
     setShowProfile((prev) => !prev);
   };
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setShowNotifs(false);
     setShowProfile(false);
     setShowMobileMenu((prev) => !prev);
@@ -157,7 +170,8 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header} role="banner">
+    <header ref={headerRef} className={styles.header} role="banner">
+      <div className={styles.headerBg} aria-hidden="true" />
       <div className={styles.inner}>
         {/* Logo - clicking VELoop Games navigates to Home */}
         <div className={styles.logoGroup}>
@@ -237,7 +251,7 @@ export default function Header() {
           <button
             type="button"
             className={`${styles.iconBtn} ${showNotifs ? styles.iconBtnActive : ''}`}
-            onClick={toggleNotifs}
+            onClick={(e) => toggleNotifs(e)}
             aria-label={`Notifications ${unreadCount > 0 ? `(${unreadCount} unread)` : ''}`}
             aria-expanded={showNotifs}
           >
@@ -262,7 +276,7 @@ export default function Header() {
           <button
             type="button"
             className={`${styles.userBtn} ${showProfile || isProfile ? styles.userBtnActive : ''}`}
-            onClick={toggleProfile}
+            onClick={(e) => toggleProfile(e)}
             aria-label={user?.isLoggedIn ? `${user.name} Profile and Wallet` : 'Guest Profile'}
             aria-expanded={showProfile}
           >
@@ -294,7 +308,7 @@ export default function Header() {
           <button
             type="button"
             className={styles.mobileMenuBtn}
-            onClick={toggleMobileMenu}
+            onClick={(e) => toggleMobileMenu(e)}
             aria-label="Toggle navigation menu"
             aria-expanded={showMobileMenu}
           >
@@ -660,9 +674,14 @@ export default function Header() {
         onClose={() => setShowAuthModal(false)}
       />
 
-      {/* Backdrop overlay to close open dropdowns when clicking outside */}
+            {/* Backdrop overlay to close open dropdowns when clicking outside */}
       {(showNotifs || showProfile || showMobileMenu) && (
-        <div className={styles.dropdownOverlay} onClick={closeAll} aria-hidden="true" />
+        <div
+          className={styles.dropdownOverlay}
+          onClick={closeAll}
+          onTouchStart={closeAll}
+          aria-hidden="true"
+        />
       )}
     </header>
   );
