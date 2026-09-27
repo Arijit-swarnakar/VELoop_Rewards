@@ -143,64 +143,8 @@
   line-height: 1.6;
 }
 
-/* Footer under Tokenomics */
-.footer {
-  margin-top: var(--space-3xl);
-  padding: 32px 0 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footerLeft {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.footerBrand {
-  font-family: 'Sora', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-}
-
-.footerCopy {
-  font-size: 0.82rem;
-  color: #64748b;
-}
-
-.footerLinks {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.footerLink {
-  color: #94a3b8;
-  font-size: 0.82rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-
-.footerLink:hover {
-  color: #ffffff;
-}
-
 @media (max-width: 768px) {
   .container {
     padding: 24px 18px;
-  }
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
   }
 }

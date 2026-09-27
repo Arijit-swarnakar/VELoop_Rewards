@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styles from './Tokenomics.module.css';
 
 export default function Tokenomics() {
@@ -72,31 +71,6 @@ export default function Tokenomics() {
           </div>
         </div>
       </div>
-
-      {/* Footer from screenshot */}
-      <footer className={styles.footer} role="contentinfo">
-        <div className={styles.footerLeft}>
-          <span className={styles.footerBrand}>VELoop</span>
-          <span className={styles.footerCopy}>
-            &copy; 2025 VELoop Rewards Ecosystem. All rights reserved.
-          </span>
-        </div>
-
-        <div className={styles.footerLinks}>
-          <Link to="/rewards" className={styles.footerLink}>
-            Privacy Policy
-          </Link>
-          <Link to="/rewards" className={styles.footerLink}>
-            Terms of Service
-          </Link>
-          <Link to="/rewards" className={styles.footerLink}>
-            Vault Security
-          </Link>
-          <Link to="/profile" className={styles.footerLink}>
-            Help Center
-          </Link>
-        </div>
-      </footer>
     </section>
   );
 }
